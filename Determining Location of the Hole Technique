@@ -1,0 +1,16 @@
+pic = imread('c2.jpg');
+imshow(pic);
+grayPic = rgb2gray(pic);
+edgePrewitt = edge(grayPic, 'prewitt');
+imshow(edgePrewitt);
+edgeRoberts = edge(grayPic, 'roberts');
+imshow(edgeRoberts);
+edgeSobel = edge(grayPic, 'sobel');
+imshow(edgeSobel);
+subplot('position',[0.35 0.35 0.3 0.3]);
+imshow(imfill(edgeSobel,'holes'));
+imshow(imfill(edgeRoberts,'holes'));
+imshow(imfill(edgePrewitt,'holes'));
+FinalPic = edge(grayPic,'prewitt');
+PicOut=bwareaopen(imfill(FinalPic,'holes'),770);
+imshow(PicOut);
